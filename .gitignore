@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Environment files
+.env
+.env*.local
+.env.development
+.env.test
+.env.production
+*/.env
+*/.env*.local
+*/.env.development
+*/.env.production
+
+# Secrets & Private Keys
+serviceAccountKey.json
+*/serviceAccountKey.json
+*.pem
+*.key
+
+# Database, Queues & Cache
+dump.rdb
+*/dump.rdb
+*.sqlite
+*.sqlite3
+
+# Build outputs
+dist/
+*/dist/
+build/
+*/build/
+
+# Uploads directory
+uploads/
+*/uploads/*
+!*/uploads/.gitkeep
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

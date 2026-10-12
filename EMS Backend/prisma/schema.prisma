@@ -1,0 +1,116 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model event_organizers {
+  id              String  @id
+  event_id        String
+  name            String
+  department      String
+  email           String
+  phone           String
+  register_number String?
+  events          events  @relation(fields: [event_id], references: [id], onDelete: Cascade)
+}
+
+model events {
+  id                    String             @id
+  title                 String
+  description           String
+  banner_url            String?
+  event_date            String
+  start_time            String
+  end_time              String
+  registration_deadline String
+  venue                 String
+  registration_fee      Float              @default(0.0)
+  max_team_size         Int                @default(1)
+  whatsapp_group_link   String?
+  upi_id                String?
+  account_holder_name   String?
+  upi_qr_url            String?
+  status                EventStatus        @default(draft)
+  created_by            String
+  created_at            DateTime           @default(now())
+  updated_at            DateTime
+  event_scope           String?            @default("National")
+  event_type            String?            @default("Competition")
+  department            String?            @default("Computer Science & Engineering")
+  registration_required String?            @default("yes")
+  event_organizers      event_organizers[]
+  registrations         registrations[]
+
+  @@index([event_scope])
+  @@index([event_type])
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model registration_members {
+  id              String        @id
+  registration_id String
+  name            String
+  email           String
+  phone           String
+  department      String
+  registrations   registrations @relation(fields: [registration_id], references: [id], onDelete: Cascade)
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model registrations {
+  id                     String                 @id
+  event_id               String
+  team_leader_name       String
+  team_leader_email      String
+  team_leader_phone      String
+  department             String
+  payment_screenshot_url String?
+  status                 RegistrationStatus     @default(pending)
+  created_at             DateTime               @default(now())
+  rejection_reason       String?
+  reviewed_by            String?
+  updated_at             DateTime
+  registration_members   registration_members[]
+  events                 events                 @relation(fields: [event_id], references: [id], onDelete: Cascade)
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model users {
+  id           String
+  firebase_uid String?  @unique
+  full_name    String
+  email        String   @id @unique
+  phone        String?
+  role         Role     @default(coordinator)
+  status       Status   @default(active)
+  created_at   DateTime @default(now())
+  updated_at   DateTime
+}
+
+enum EventStatus {
+  draft
+  published
+  archived
+}
+
+enum RegistrationStatus {
+  pending
+  approved
+  rejected
+}
+
+enum Role {
+  admin
+  coordinator
+  student
+}
+
+enum Status {
+  active
+  inactive
+}

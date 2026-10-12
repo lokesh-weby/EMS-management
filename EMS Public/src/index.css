@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-xyz: #0c4da2;
+  --color-xyz-dark: #09397a;
+  --color-xyz-light: #1664cc;
+}
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  ::selection {
+    background-color: #0c4da2;
+    color: #ffffff;
+  }
+}
+
+/* Custom Glassmorphism & Glow Styles for Light Theme */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.glass-card {
+  background: #ffffff;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.glass-card:hover {
+  border-color: rgba(12, 77, 162, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(12, 77, 162, 0.15);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #0c4da2 0%, #1d4ed8 50%, #1e40af 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glow-button {
+  background: linear-gradient(135deg, #0c4da2 0%, #09397a 100%);
+  box-shadow: 0 4px 14px rgba(12, 77, 162, 0.35);
+}
+
+.glow-button:hover {
+  box-shadow: 0 6px 20px rgba(12, 77, 162, 0.5);
+}

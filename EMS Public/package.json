@@ -1,0 +1,27 @@
+{
+  "name": "ems-public",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "EMS Public Events Portal Frontend",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.112.2",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.8",
+    "lucide-react": "^1.29.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^4.0.0",
+    "vite": "^6.0.0"
+  }
+}

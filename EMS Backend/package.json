@@ -1,0 +1,30 @@
+{
+  "name": "ems-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "EMS Centralized Express Backend API Server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "worker": "node worker.js",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push"
+  },
+  "dependencies": {
+    "@bull-board/api": "^9.5.0",
+    "@bull-board/express": "^9.5.0",
+    "@prisma/client": "^5.22.0",
+    "bullmq": "^6.3.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "firebase-admin": "^14.2.0",
+    "ioredis": "^6.0.0",
+    "jsonwebtoken": "^9.0.3",
+    "nodemailer": "^6.10.0"
+  },
+  "devDependencies": {
+    "prisma": "^5.22.0"
+  }
+}
